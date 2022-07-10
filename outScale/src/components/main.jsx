@@ -15,15 +15,15 @@ export const MainPage = () => {
     const [order, SetOrder] = useState("asc")
 
     const handleChange = (e) => {
-        
-        if( e.target.value==="asc"){
+
+        if (e.target.value === "asc") {
             SetData([])
             SetOrder("asc")
-          }
-          if( e.target.value==="desc"){ 
-            SetData([]) 
+        }
+        if (e.target.value === "desc") {
+            SetData([])
             SetOrder("desc")
-          }
+        }
 
         SetOrder(e.target.value)
     };
@@ -35,7 +35,7 @@ export const MainPage = () => {
 
     useEffect(() => {
         GetData()
-    }, [page, Price,order])
+    }, [page, Price, order])
 
     const GetData = () => {
         axios.get(`https://outscal-api.herokuapp.com/product/?page=${page}&price=${Price}&sortBy=price&OrderBy=${order}`).then(({ data }) => {
@@ -99,11 +99,11 @@ export const MainPage = () => {
 
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "space-evenly", pt: "50px" }}>
 
-                {Data.map((e,i) => {
-                    return <Product key={i+1} data={e} />
+                {Data.map((e, i) => {
+                    return <Product key={i + 1} data={e} />
                 })}
             </Box>
         </Box>
     )
-} 
+}
 

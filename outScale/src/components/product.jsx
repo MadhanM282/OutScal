@@ -14,8 +14,8 @@ export const Product = ({ data }) => {
                     <Typography sx={{ fontWeight: "bolder" }}>Price:- {data.price}/-</Typography>
                 </Box>
                 <Box >
-                    <Button sx={{ color: "black", background: "orange", m: 1, borderRadius: 4, width: "40%" }}>Buy</Button>
-                    <Button sx={{ color: "black", background: "orange", m: 1, borderRadius: 4, width: "40%" }}>Cart</Button>
+                    <Button sx={[{ color: "black", background: "orange", m: 1, borderRadius: 4, width: "40%" },() => ({ "&:hover": { color: "orange", bgcolor: "black" } })]}>Buy</Button>
+                    <Button sx={[{ color: "black", background: "orange", m: 1, borderRadius: 4, width: "40%" },() => ({ "&:hover": { color: "orange", bgcolor: "black" } })]}>Cart</Button>
                 </Box>
 
             </Box>
