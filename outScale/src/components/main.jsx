@@ -13,7 +13,7 @@ export const MainPage = () => {
     const [page, SetPage] = useState(PageNumber)
     const [Price, setPrice] = useState('');
     const [order, SetOrder] = useState("asc")
-
+    const [loding, Setloding] = useState(false)
     const handleChange = (e) => {
 
         if (e.target.value === "asc") {
@@ -38,9 +38,11 @@ export const MainPage = () => {
     }, [page, Price, order])
 
     const GetData = () => {
+        Setloding(true)
         axios.get(`https://outscal-api.herokuapp.com/product/?page=${page}&price=${Price}&sortBy=price&OrderBy=${order}`).then(({ data }) => {
 
             SetData([...Data, ...data])
+            Setloding(false)
         })
     }
 
@@ -102,6 +104,7 @@ export const MainPage = () => {
                 {Data.map((e, i) => {
                     return <Product key={i + 1} data={e} />
                 })}
+                {loding ? <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" alt="" /> : ""}
             </Box>
         </Box>
     )
